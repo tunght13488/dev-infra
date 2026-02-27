@@ -15,7 +15,7 @@
     - name: Setup main user
       become: yes
       ansible.builtin.user:
-        name: testuser
+        name: tung
         comment: Test User
         groups:
           - wheel
