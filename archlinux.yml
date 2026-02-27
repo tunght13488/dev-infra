@@ -1,0 +1,61 @@
+---
+- name: Setup local environment
+  hosts: local
+
+  tasks:
+
+    - name: Ping
+      ansible.builtin.ping:
+
+    - name: Update package cache
+      become: yes
+      community.general.pacman:
+        update_cache: true
+
+    - name: Setup main user
+      become: yes
+      ansible.builtin.user:
+        name: testuser
+        comment: Test User
+        groups:
+          - wheel
+        create_home: true
+        shell: /usr/bin/zsh
+        password: "$1$1fiOgY1j$g4DHtZKcAoz0cRrmqqIf31"
+
+    # Setup AUR builder
+    - name: Create the `aur_builder` user
+      become: yes
+      ansible.builtin.user:
+        name: aur_builder
+        create_home: yes
+        group: wheel
+
+    - name: Allow the `aur_builder` user to run `sudo pacman` without a password
+      become: yes
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers.d/11-install-aur_builder
+        line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+        create: yes
+        mode: 0644
+        validate: 'visudo -cf %s'
+
+    - name: Install paru using makepkg if it isn't installed already
+      become: yes
+      become_user: aur_builder
+      kewlfft.aur.aur:
+        name: paru
+        use: makepkg
+        state: present
+
+
+    # Install packages
+    - name: Install packages
+      kewlfft.aur.aur:
+        use: paru
+        name:
+          - git
+          - tmux
+          - zsh
+          - neovim
+        state: present
