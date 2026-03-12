@@ -1,0 +1,17 @@
+---
+- name: Ensure directories exists
+  become: yes
+  ansible.builtin.file:
+    path: /etc/X11/xorg.conf.d
+    state: directory
+    mode: '0755'
+
+- name: Copy files
+  become: yes
+  ansible.builtin.copy:
+    src: xorg/xorg.conf.d/90-custom-kbd.conf
+    dest: /etc/X11/xorg.conf.d/90-custom-kbd.conf
+    owner: root
+    group: root
+    mode: '0644'
+    backup: true

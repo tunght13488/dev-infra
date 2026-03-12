@@ -1,0 +1,29 @@
+---
+# - name: Install PHP 8.1
+#   become: yes
+#   become_user: aur_builder
+#   kewlfft.aur.aur:
+#     name: php81
+#     use: makepkg
+#     state: present
+
+- name: Install Java packages
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    use: paru
+    name:
+      - java-runtime-common
+      - java-environment-common
+      - jdk8-openjdk
+      - maven363
+    state: present
+
+# - name: PHP config
+#   become: yes
+#   ansible.builtin.template:
+#     src: php81/99-custom.ini.j2
+#     dest: /etc/php81/conf.d/99-custom.ini
+#     owner: root
+#     group: root
+#     mode: '0644'

@@ -8,7 +8,7 @@
       ansible.builtin.ping:
 
   roles:
-    - role: base
+    - role: archlinux-base
       tags:
         - base
 

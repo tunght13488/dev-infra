@@ -1,0 +1,134 @@
+aur/php81-apache 8.1.34-1 [+11 ~0.00]
+    Apache SAPI for php81
+aur/php81-bcmath 8.1.34-1 [+11 ~0.00]
+    bcmath module for php81
+aur/php81-bz2 8.1.34-1 [+11 ~0.00]
+    bz2 module for php81
+aur/php81-calendar 8.1.34-1 [+11 ~0.00]
+    calendar module for php81
+aur/php81-cgi 8.1.34-1 [+11 ~0.00]
+    CGI and FCGI SAPI for php81
+aur/php81-cli 8.1.34-1 [+11 ~0.00]
+    cli (command-line executable) version for php81
+aur/php81-ctype 8.1.34-1 [+11 ~0.00]
+    ctype module for php81
+aur/php81-curl 8.1.34-1 [+11 ~0.00]
+    curl module for php81
+aur/php81-dba 8.1.34-1 [+11 ~0.00]
+    dba module for php81
+aur/php81-dblib 8.1.34-1 [+11 ~0.00]
+    pdo_dblib module for php81
+aur/php81-dom 8.1.34-1 [+11 ~0.00]
+    dom module for php81
+aur/php81-embed 8.1.34-1 [+11 ~0.00]
+    Embedded PHP SAPI library for php81
+aur/php81-enchant 8.1.34-1 [+11 ~0.00]
+    enchant module for php81
+aur/php81-exif 8.1.34-1 [+11 ~0.00]
+    exif module for php81
+aur/php81-ffi 8.1.34-1 [+11 ~0.00]
+    ffi module for php81
+aur/php81-fileinfo 8.1.34-1 [+11 ~0.00]
+    fileinfo module for php81
+aur/php81-firebird 8.1.34-1 [+11 ~0.00]
+    pdo_firebird module for php81
+aur/php81-fpm 8.1.34-1 [+11 ~0.00]
+    FastCGI Process Manager for php81
+aur/php81-ftp 8.1.34-1 [+11 ~0.00]
+    FTP module for php81
+aur/php81-gd 8.1.34-1 [+11 ~0.00]
+    gd module for php81
+aur/php81-gettext 8.1.34-1 [+11 ~0.00]
+    gettext module for php81
+aur/php81-gmp 8.1.34-1 [+11 ~0.00]
+    gmp module for php81
+aur/php81-iconv 8.1.34-1 [+11 ~0.00]
+    iconv module for php81
+aur/php81-imap 8.1.34-1 [+11 ~0.00]
+    imap module for php81
+aur/php81-intl 8.1.34-1 [+11 ~0.00]
+    intl module for php81
+aur/php81-ldap 8.1.34-1 [+11 ~0.00]
+    ldap module for php81
+aur/php81-litespeed 8.1.34-1 [+11 ~0.00]
+    LiteSpeed SAPI for php81
+aur/php81-mbstring 8.1.34-1 [+11 ~0.00]
+    mbstring module for php81
+aur/php81-mysql 8.1.34-1 [+11 ~0.00]
+    MySQL modules for php81
+aur/php81-odbc 8.1.34-1 [+11 ~0.00]
+    ODBC modules for php81
+aur/php81-opcache 8.1.34-1 [+11 ~0.00]
+    opcache zend module for php81
+aur/php81-openssl 8.1.34-1 [+11 ~0.00]
+    OpenSSL module for php81
+aur/php81-pcntl 8.1.34-1 [+11 ~0.00]
+    pcntl module for php81
+aur/php81-pdo 8.1.34-1 [+11 ~0.00]
+    pdo module for php81
+aur/php81-pear 8.1.34-1 [+11 ~0.00]
+    PHP Extension and Application Repository (PEAR) for php81
+aur/php81-pecl 8.1.34-1 [+11 ~0.00]
+    PHP Extension Community Library (PECL) for php81
+aur/php81-pgsql 8.1.34-1 [+11 ~0.00]
+    PostgreSQL modules for php81
+aur/php81-phar 8.1.34-1 [+11 ~0.00]
+    phar module for php81
+aur/php81-phpdbg 8.1.34-1 [+11 ~0.00]
+    Interactive PHP debugger for php81
+aur/php81-posix 8.1.34-1 [+11 ~0.00]
+    posix module for php81
+aur/php81-pspell 8.1.34-1 [+11 ~0.00]
+    pspell module for php81
+aur/php81-shmop 8.1.34-1 [+11 ~0.00]
+    shmop module for php81
+aur/php81-simplexml 8.1.34-1 [+11 ~0.00]
+    simplexml module for php81
+aur/php81-snmp 8.1.34-1 [+11 ~0.00]
+    snmp module for php81
+aur/php81-soap 8.1.34-1 [+11 ~0.00]
+    soap module for php81
+aur/php81-sockets 8.1.34-1 [+11 ~0.00]
+    sockets module for php81
+aur/php81-sodium 8.1.34-1 [+11 ~0.00]
+    sodium (libsodium) module for php81
+aur/php81-sqlite 8.1.34-1 [+11 ~0.00]
+    sqlite module for php81
+aur/php81-sysvmsg 8.1.34-1 [+11 ~0.00]
+    sysvmsg module for php81
+aur/php81-sysvsem 8.1.34-1 [+11 ~0.00]
+    sysvsem module for php81
+aur/php81-sysvshm 8.1.34-1 [+11 ~0.00]
+    sysvshm module for php81
+aur/php81-tidy 8.1.34-1 [+11 ~0.00]
+    tidy module for php81
+aur/php81-tokenizer 8.1.34-1 [+11 ~0.00]
+    tokenizer module for php81
+aur/php81-xml 8.1.34-1 [+11 ~0.00]
+    xml modules for php81
+aur/php81-xmlreader 8.1.34-1 [+11 ~0.00]
+    xmlreader module for php81
+aur/php81-xmlwriter 8.1.34-1 [+11 ~0.00]
+    xmlwriter module for php81
+aur/php81-xsl 8.1.34-1 [+11 ~0.00]
+    xsl module for php81
+aur/php81-zip 8.1.34-1 [+11 ~0.00]
+    zip module for php81
+aur/php81-apcu 5.1.22-1 [+1 ~0.00] [Orphaned]
+    A userland caching module for PHP 8.1
+aur/php81-igbinary 3.2.15-1 [+1 ~0.00]
+    php81 PECL extension igbinary
+aur/php81-imagick 3.7.0-2 [+1 ~0.00]
+    PHP extension for imagick php81
+aur/php81-redis 6.1.0-1 [+1 ~0.00]
+    PHP extension for interfacing with Redis
+aur/php81-amqp 1.11.0-1 [+0 ~0.00]
+    PHP 8.1 extension compatible with AMQP 0-9-1 message brokers
+aur/php81-mcrypt 1.0.7-1 [+0 ~0.00]
+    php81 bindings for the unmaintained libmcrypt. For compat purposes
+aur/php81-openswoole 22.0.0-2 [+0 ~0.00]
+    swoole PECL extension for PHP81
+aur/php81-pdo_sqlsrv 5.12.0-1 [+0 ~0.00]
+    Microsoft SQL Server PDO Drivers for PHP
+aur/php81-xdebug 3.4.2-1 [+0 ~0.00]
+    Xdebug is an extension for PHP to assist with debugging and development for php81

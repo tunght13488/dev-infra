@@ -1,0 +1,42 @@
+---
+- name: Install PHP 8.1
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: php81
+    use: makepkg
+    state: present
+
+- name: Install PHP 8.1 packages
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    use: paru
+    name:
+      - php81-apcu
+      - php81-igbinary
+      - php81-imagick
+      - php81-redis
+      - php81-amqp
+      - php81-mcrypt
+      - php81-xdebug
+    state: present
+
+- name: PHP custom config
+  become: yes
+  ansible.builtin.template:
+    src: php81/99-custom.ini.j2
+    dest: /etc/php81/conf.d/99-custom.ini
+    owner: root
+    group: root
+    mode: '0644'
+    backup: true
+  notify:
+    - Restart php81-fpm
+
+- name: Enable & start php81-fpm service
+  become: yes
+  ansible.builtin.systemd_service:
+    name: php81-fpm
+    state: started
+    enabled: true

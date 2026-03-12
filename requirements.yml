@@ -1,3 +1,4 @@
+---
 collections:
-  # https://github.com/kewlfft/ansible-aur
+  - name: community.general
   - name: kewlfft.aur

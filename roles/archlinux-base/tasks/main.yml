@@ -1,0 +1,161 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for devbox
+- name: Ping
+  ansible.builtin.ping:
+
+- name: Update package cache
+  become: yes
+  community.general.pacman:
+    update_cache: true
+
+- name: Setup main user
+  become: yes
+  ansible.builtin.user:
+    name: tung
+    comment: Tung Ha
+    groups:
+      - wheel
+    create_home: true
+    shell: /usr/bin/zsh
+    password: "$1$1fiOgY1j$g4DHtZKcAoz0cRrmqqIf31"
+
+- ansible.builtin.include_tasks: aur.yml
+
+# Install packages
+- name: Install packages
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    use: paru
+    name:
+      - pacman-contrib
+      - python-boto3
+      - less
+      - base-devel
+      - net-tools
+      - linux-headers
+      - devtools
+      - git
+      - tmux
+      - zsh
+      - vim
+      - neovim
+      - man-db
+      - man-pages
+      - gnome
+      - gdm
+      - gnome-tweaks
+      - visual-studio-code-bin
+      - starship
+      - google-chrome
+      - 1password
+      - alacritty
+      - ttf-jetbrains-mono
+      - ttf-jetbrains-mono-nerd
+      - ttf-fira-code
+      - ttf-firacode-nerd
+      - otf-monaspace
+      - otf-monaspace-nerd
+      - ttf-monaspace-frozen
+      - nvm
+      - pyenv
+      - open-vm-tools
+      - gtkmm3
+      - xf86-input-vmmouse
+      - mesa
+      - opencode-desktop-bin
+      - claude-code
+      - github-cli
+      - phpstorm
+      - phpstorm-jre
+      - intellij-idea-ultimate-edition
+      - composer
+      - htop
+      - ngrok
+      - git-town-bin
+      - aws-cli-v2
+      - diff-so-fancy
+      - docker
+      - docker-buildx
+      - uutils-coreutils
+      - uutils-findutils
+      - uutils-diffutils
+      - fzf
+      - ghostty
+      - fd
+      - bat
+      - eza
+      - lsd
+      - ncdu
+      - mcfly
+      - jq
+      - ijq
+      - tldr
+      - procs
+      - httpie
+      - curlie
+      - zoxide
+      - doggo
+      - lazygit
+      - nodejs-lts-krypton
+      - postman-bin
+      - wl-clipboard
+      - xclip
+      - zed
+      - broot
+    state: present
+
+- name: Setup main user
+  become: yes
+  ansible.builtin.user:
+    name: tung
+    append: true
+    groups:
+      - docker
+
+- name: Enable & start services
+  become: yes
+  ansible.builtin.systemd_service:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+  loop:
+    - gdm
+    - vmtoolsd
+    - vmware-vmblock-fuse
+    - docker
+
+- name: Configure timesync
+  become: yes
+  ansible.builtin.shell: |
+    vmware-toolbox-cmd timesync enable
+    hwclock --hctosys --localtime
+
+- ansible.builtin.include_tasks: mysql80.yml
+
+- ansible.builtin.include_tasks: php81.yml
+
+- ansible.builtin.include_tasks: nginx.yml
+
+- ansible.builtin.include_tasks: java.yml
+
+# setup dotfiles
+
+# - name: Install Python 3 using pyenv
+#   # lang=
+#   ansible.builtin.shell: |
+#     pyenv install 3
+#     pyenv global 3
+#     pip install --user powerline-status
+
+# - name: Install Node using nvm
+#   # lang=
+#   ansible.builtin.shell: |
+#     nvm install --lts
+# - name: Install global NodeJS packages
+#   community.general.npm:
+#     name: diff-so-fancy
+#     global: true
+
+- ansible.builtin.include_tasks: custom.yml

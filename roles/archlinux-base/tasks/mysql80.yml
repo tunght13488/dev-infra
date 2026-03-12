@@ -1,0 +1,31 @@
+---
+- name: Import GPG key for MySQL 8.0
+  become: yes
+  become_user: aur_builder
+  ansible.builtin.shell: |
+    gpg --receive-keys BCA43417C3B485DD128EC6D4B7B3B788A8D3785C
+
+- name: Install MySQL 8.0
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: mysql80
+    use: makepkg
+    state: present
+
+# - name: Post install
+#   become: yes
+#   become_user: aur_builder
+#   ansible.builtin.shell: |
+#     echo ":: You need to initialize the MySQL data directory prior to starting"
+#     echo "   the service. This can be done with mysqld --initialize command, e.g.:"
+#     echo "   mysqld --initialize --user=mysql --basedir=/usr --datadir=/var/lib/mysql"
+#     echo ":: Additionally you should secure your MySQL installation using"
+#     echo "   mysql_secure_installation command after starting the mysqld service"
+
+# - name: Enable & start mysqld service
+#   become: yes
+#   ansible.builtin.systemd_service:
+#     name: mysqld
+#     state: started
+#     enabled: true

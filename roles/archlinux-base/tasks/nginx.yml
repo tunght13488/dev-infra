@@ -1,0 +1,71 @@
+---
+- name: Install nginx packages
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    use: paru
+    name:
+      - mkcert
+      - nginx
+    state: present
+
+- name: Ensure directories exists
+  become: yes
+  ansible.builtin.file:
+    path: "/etc/nginx/{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - ssl
+    - conf.d
+    - snippets
+
+- name: Create self-signed certs
+  become: yes
+  ansible.builtin.shell:
+    cmd: |
+      mkcert -install
+      mkcert -cert-file ssl.pem -key-file ssl-key.pem "*.vm.local" localhost 127.0.0.1 ::1
+    chdir: /etc/nginx/ssl
+  notify:
+    - Restart nginx
+
+- name: Copy files
+  become: yes
+  ansible.builtin.copy:
+    src: "nginx/{{ item }}"
+    dest: "/etc/nginx/{{ item }}"
+    owner: root
+    group: root
+    mode: '0644'
+    backup: true
+  loop:
+    - fastcgi_params
+    - fastcgi.conf
+    - nginx.conf
+    - conf.d/middleware.conf
+    - conf.d/v3.conf
+    - snippets/common.conf
+    - snippets/http.conf
+    - snippets/https.conf
+    - snippets/laravel-81.conf
+    - snippets/laravel-83.conf
+  notify:
+    - Restart nginx
+
+- name: Enable & start nginx service
+  become: yes
+  ansible.builtin.systemd_service:
+    name: nginx
+    state: started
+    enabled: true
+
+- name: Update hosts
+  become: yes
+  ansible.builtin.blockinfile:
+    path: /etc/hosts
+    append_newline: true
+    prepend_newline: true
+    block: |
+      127.0.0.1 middleware.vm.local
+      127.0.0.1 v3.vm.local
