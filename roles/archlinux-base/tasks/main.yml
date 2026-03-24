@@ -5,12 +5,12 @@
   ansible.builtin.ping:
 
 - name: Update package cache
-  become: yes
+  become: true
   community.general.pacman:
     update_cache: true
 
 - name: Setup main user
-  become: yes
+  become: true
   ansible.builtin.user:
     name: tung
     comment: Tung Ha
@@ -24,7 +24,7 @@
 
 # Install packages
 - name: Install packages
-  become: yes
+  become: true
   become_user: aur_builder
   kewlfft.aur.aur:
     use: paru
@@ -104,10 +104,12 @@
       - xclip
       - zed
       - broot
+      - python-uv
+      - lnav
     state: present
 
 - name: Setup main user
-  become: yes
+  become: true
   ansible.builtin.user:
     name: tung
     append: true
@@ -115,7 +117,7 @@
       - docker
 
 - name: Enable & start services
-  become: yes
+  become: true
   ansible.builtin.systemd_service:
     name: "{{ item }}"
     state: started
@@ -127,7 +129,7 @@
     - docker
 
 - name: Configure timesync
-  become: yes
+  become: true
   ansible.builtin.shell: |
     vmware-toolbox-cmd timesync enable
     hwclock --hctosys --localtime
@@ -135,6 +137,8 @@
 - ansible.builtin.include_tasks: mysql80.yml
 
 - ansible.builtin.include_tasks: php81.yml
+
+- ansible.builtin.include_tasks: php83.yml
 
 - ansible.builtin.include_tasks: nginx.yml
 

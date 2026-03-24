@@ -1,6 +1,6 @@
 ---
 - name: Install nginx packages
-  become: yes
+  become: true
   become_user: aur_builder
   kewlfft.aur.aur:
     use: paru
@@ -10,7 +10,7 @@
     state: present
 
 - name: Ensure directories exists
-  become: yes
+  become: true
   ansible.builtin.file:
     path: "/etc/nginx/{{ item }}"
     state: directory
@@ -21,7 +21,7 @@
     - snippets
 
 - name: Create self-signed certs
-  become: yes
+  become: true
   ansible.builtin.shell:
     cmd: |
       mkcert -install
@@ -31,7 +31,7 @@
     - Restart nginx
 
 - name: Copy files
-  become: yes
+  become: true
   ansible.builtin.copy:
     src: "nginx/{{ item }}"
     dest: "/etc/nginx/{{ item }}"
@@ -54,14 +54,14 @@
     - Restart nginx
 
 - name: Enable & start nginx service
-  become: yes
+  become: true
   ansible.builtin.systemd_service:
     name: nginx
     state: started
     enabled: true
 
 - name: Update hosts
-  become: yes
+  become: true
   ansible.builtin.blockinfile:
     path: /etc/hosts
     append_newline: true

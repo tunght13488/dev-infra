@@ -1,12 +1,19 @@
 #SPDX-License-Identifier: MIT-0
 ---
 - name: Restart php81-fpm
-  become: yes
+  become: true
   ansible.builtin.service:
     name: php81-fpm
     state: restarted
+
+- name: Restart php83-fpm
+  become: true
+  ansible.builtin.service:
+    name: php83-fpm
+    state: restarted
+
 - name: Restart nginx
-  become: yes
+  become: true
   ansible.builtin.service:
     name: nginx
     state: restarted

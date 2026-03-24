@@ -1,42 +1,42 @@
 ---
-- name: Install PHP 8.1
+- name: Install PHP 8.3
   become: true
   become_user: aur_builder
   kewlfft.aur.aur:
-    name: php81
+    name: php83
     use: makepkg
     state: present
 
-- name: Install PHP 8.1 packages
+- name: Install PHP 8.3 packages
   become: true
   become_user: aur_builder
   kewlfft.aur.aur:
     use: paru
     name:
-      - php81-apcu
-      - php81-igbinary
-      - php81-imagick
-      - php81-redis
-      - php81-amqp
-      - php81-mcrypt
-      - php81-xdebug
+      - php83-igbinary
+      # - php83-imagick
+      - php83-memcached
+      - php83-redis
+      - php83-xdebug
+      - php83-apcu
+      - php83-mcrypt
     state: present
 
-- name: PHP 8.1 custom config
+- name: PHP 8.3 custom config
   become: true
   ansible.builtin.template:
-    src: php81/99-custom.ini.j2
-    dest: /etc/php81/conf.d/99-custom.ini
+    src: php83/99-custom.ini.j2
+    dest: /etc/php83/conf.d/99-custom.ini
     owner: root
     group: root
     mode: '0644'
     backup: true
   notify:
-    - Restart php81-fpm
+    - Restart php83-fpm
 
-- name: Enable & start php81-fpm service
+- name: Enable & start php83-fpm service
   become: true
   ansible.builtin.systemd_service:
-    name: php81-fpm
+    name: php83-fpm
     state: started
     enabled: true

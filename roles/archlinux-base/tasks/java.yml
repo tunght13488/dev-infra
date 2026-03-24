@@ -1,6 +1,6 @@
 ---
 # - name: Install PHP 8.1
-#   become: yes
+#   become: true
 #   become_user: aur_builder
 #   kewlfft.aur.aur:
 #     name: php81
@@ -8,7 +8,7 @@
 #     state: present
 
 - name: Install Java packages
-  become: yes
+  become: true
   become_user: aur_builder
   kewlfft.aur.aur:
     use: paru
@@ -20,7 +20,7 @@
     state: present
 
 # - name: PHP config
-#   become: yes
+#   become: true
 #   ansible.builtin.template:
 #     src: php81/99-custom.ini.j2
 #     dest: /etc/php81/conf.d/99-custom.ini
