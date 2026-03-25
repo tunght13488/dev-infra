@@ -106,6 +106,7 @@
       - broot
       - python-uv
       - lnav
+      - pv
     state: present
 
 - name: Setup main user
