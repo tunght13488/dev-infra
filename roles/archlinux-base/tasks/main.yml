@@ -108,6 +108,7 @@
       - lnav
       - pv
       - lazygit
+      - markdownlint
     state: present
 
 - name: Setup main user
