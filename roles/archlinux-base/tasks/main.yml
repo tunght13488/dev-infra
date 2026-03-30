@@ -107,6 +107,7 @@
       - python-uv
       - lnav
       - pv
+      - lazygit
     state: present
 
 - name: Setup main user
